@@ -1,4 +1,5 @@
-<!doctype html>
+{% load blog_tags %}
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -22,7 +23,21 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
-                        <p>Nav bar</p>
+                        <h3>My blog</h3>
+                        <p>This is my blog. I've written {% total_posts %} posts so far.</p>
+
+                        <h3>Latest posts</h3>
+                        {% show_latest_posts 3 %}
+
+                        <h3>Most commented posts</h3>
+                        {% get_most_commented_posts as most_commented_posts %}
+                        <ul>
+                            {% for post in most_commented_posts %}
+                            <li>
+                                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </ul>
                 </div>
             </nav>
