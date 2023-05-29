@@ -11,11 +11,3 @@ services:
       - "./mysite/:/mysite/"
     ports:
       - 8017:8017
-
-  solr:
-    image: solr:8.10.1
-    container_name: solr
-    ports:
-      - 8983:8983
-    volumes:
-      - "./solr_data:/var/solr/data"
