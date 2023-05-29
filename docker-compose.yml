@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  mysite:
+    build: .
+    image: mysite:a1
+    container_name: mysite
+    restart: on-failure
+    command: python manage.py runserver 0.0.0.0:8017
+    volumes:
+      - "./mysite/:/mysite/"
+    ports:
+      - 8017:8017
